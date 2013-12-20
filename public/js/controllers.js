@@ -1,19 +1,19 @@
-'use strict';
-
 /* Controllers */
 
 angular.module('myApp.controllers', []).
   controller('AppCtrl', function ($scope, $http) {
 
+		$scope.data = 'milkduds';
     $http({
-      method: 'GET',
-      url: '/api/name'
+      method: 'POST',
+      url: '/api/loadshop',
+			data: { shopUrl: "http://www.etsy.com/shop/raptorbaby/rss" }
     }).
     success(function (data, status, headers, config) {
-      $scope.name = data.name;
+			$scope.data = data;
     }).
     error(function (data, status, headers, config) {
-      $scope.name = 'Error!'
+      $scope.data = 'Error!'
     });
 
   }).
